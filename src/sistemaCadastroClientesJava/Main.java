@@ -23,7 +23,7 @@ public class Main {
 				editar();
 				break;
 			case 4:
-				remover();
+				remover(scan, cs);
 				break;
 			case 0:
 				System.out.println("\nSaindo do sistema...");
@@ -41,7 +41,7 @@ public class Main {
 	}
 	
 	public static int opcoes(int opcao, Scanner scan) {
-		System.out.println(":::SISTEMA DE CADASTRO DE CLIENTES:::");
+		System.out.println("\n:::SISTEMA DE CADASTRO DE CLIENTES:::");
 		System.out.println("Escolha uma opção:  "
 				           + "\n1 - Cadastrar\r\n"
 				           + "2 - Listar\r\n"
@@ -79,8 +79,10 @@ public class Main {
 		//...
 	}
     
-    public static void remover() {
-		//...
+    public static void remover(Scanner scan, clienteService cs) {
+		System.out.println("Informe o ID do cliente que deseja remover: ");
+		int id = scan.nextInt();
+		cs.removerCliente(id);
 	}
 
 }

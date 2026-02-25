@@ -31,5 +31,20 @@ public class clienteService {
 	public void editarCliente () {
 		//...
 	}
+	
+	public void removerCliente(int id) {
+		for (int i = 0; i< listaClientes.size(); i++) {
+			Cliente c = listaClientes.get(i);
+			if (c.getId() == id) {
+				listaClientes.remove(i);
+				i--;
+				System.out.println("Cliente removido com sucesso");
+				return;
+			} else {
+				System.out.println("Id não encontrado!!");
+				return;
+			}
+		}
+	}
 
 }
