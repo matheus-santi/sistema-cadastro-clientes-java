@@ -28,9 +28,20 @@ public class clienteService {
 		}
 	}
 	
-	public void editarCliente () {
-		//...
-	}
+	public void editarCliente(int id, String nome, String telefone, String email) {
+
+        for (Cliente c : listaClientes) {
+            if (c.getId() == id) {
+                c.setNome(nome);
+                c.setTelefone(telefone);
+                c.setEmail(email);
+                System.out.println("Cliente atualizado!");
+                return;
+            }
+        }
+
+        System.out.println("Cliente não encontrado.");
+    }
 	
 	public void removerCliente(int id) {
 		for (int i = 0; i< listaClientes.size(); i++) {

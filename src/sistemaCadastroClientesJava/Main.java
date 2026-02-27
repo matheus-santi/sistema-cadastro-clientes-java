@@ -20,7 +20,7 @@ public class Main {
 				listar(cs);
 				break;
 			case 3:
-				editar();
+				editar(scan, cs);
 				break;
 			case 4:
 				remover(scan, cs);
@@ -75,9 +75,21 @@ public class Main {
 		cs.listarCliente();
 	}
     
-    public static void editar() {
-		//...
-	}
+    public static void editar(Scanner scan, clienteService cs) {
+    	System.out.println("Informe o ID do cliente que deseja editar os dados: ");
+    	int id = scan.nextInt();
+    	scan.nextLine();
+    	
+    	System.out.println("Novo nome: ");
+    	String nome  = scan.nextLine();
+    	System.out.println("Novo telefone: ");
+    	String telefone = scan.nextLine();
+    	System.out.println("Novo E-mail: ");
+    	String email = scan.nextLine();
+    	
+    	
+    	cs.editarCliente(id, nome, telefone, email);
+    }
     
     public static void remover(Scanner scan, clienteService cs) {
 		System.out.println("Informe o ID do cliente que deseja remover: ");
