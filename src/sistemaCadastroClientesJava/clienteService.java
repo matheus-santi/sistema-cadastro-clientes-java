@@ -1,6 +1,11 @@
 package sistemaCadastroClientesJava;
 
 import java.util.ArrayList;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.io.IOException;
+import java.io.FileReader;
+import java.io.BufferedReader;
 
 public class clienteService {
 	private ArrayList<Cliente> listaClientes;
@@ -56,6 +61,55 @@ public class clienteService {
 				return;
 			}
 		}
+	}
+	
+	public void salvarEmArquivo() {
+
+	    try {
+	        FileWriter fw = new FileWriter("clientes.txt");
+	        PrintWriter pw = new PrintWriter(fw);
+
+	        for (Cliente c : listaClientes) {
+	            pw.println(c.getId() + ";" 
+	                       + c.getNome() + ";" 
+	                       + c.getTelefone() + ";" 
+	                       + c.getEmail());
+	        }
+
+	        pw.close();
+	        System.out.println("Dados salvos com sucesso!");
+
+	    } catch (IOException e) {
+	        System.out.println("Erro ao salvar arquivo.");
+	    }
+	}
+	
+	public void carregarDoArquivo() {
+
+	    try {
+	        FileReader fr = new FileReader("clientes.txt");
+	        BufferedReader br = new BufferedReader(fr);
+
+	        String linha;
+
+	        while ((linha = br.readLine()) != null) {
+
+	            String[] partes = linha.split(";");
+
+	            int id = Integer.parseInt(partes[0]);
+	            String nome = partes[1];
+	            String telefone = partes[2];
+	            String email = partes[3];
+
+	            listaClientes.add(new Cliente(id, nome, email, telefone));
+	        }
+
+	        br.close();
+	        System.out.println("Dados carregados!");
+
+	    } catch (IOException e) {
+	        System.out.println("Arquivo não encontrado, será criado um novo.");
+	    }
 	}
 
 }

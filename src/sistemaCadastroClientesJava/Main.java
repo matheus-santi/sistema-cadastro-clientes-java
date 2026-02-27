@@ -7,6 +7,7 @@ public class Main {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		clienteService cs = new clienteService();
+		cs.carregarDoArquivo();
 		int opcao=0;
 		
 		do {
@@ -68,6 +69,7 @@ public class Main {
 		
 		cs.cadastrarCliente(id, nome, email, telefone);
 		System.out.println("Cliente cadastrado com sucesso");
+		cs.salvarEmArquivo();
 	}
 	
     public static void listar(clienteService cs) {
@@ -89,6 +91,7 @@ public class Main {
     	
     	
     	cs.editarCliente(id, nome, telefone, email);
+    	cs.salvarEmArquivo();
     }
     
     public static void remover(Scanner scan, clienteService cs) {
